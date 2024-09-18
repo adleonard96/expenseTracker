@@ -4,12 +4,16 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "C#: ExpenseTracker Debug",
-            "type": "dotnet",
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/expenseTracker/expenseTracker.csproj"
-        }
+            "preLaunchTask": "dotnet: build",
+            "program": "${workspaceFolder}/expenseTracker/bin/Debug/net8.0/expenseTracker.dll",
+            "args": ["add"],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
     ]
 }
