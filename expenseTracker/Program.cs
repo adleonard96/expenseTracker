@@ -7,6 +7,7 @@
             Console.WriteLine("Please enter one of the following commands:\n-add\n-list\n-summary\n-delete\n-budget\n-export\n");
             return;
         }
+        
         switch(args[0].ToLower()) 
         {
             case "add":
