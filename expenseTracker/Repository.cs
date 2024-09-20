@@ -1,7 +1,11 @@
 using System.Text.Json;
 
 class Repository {
-    public static List<Expense> GetHistory(){
+    public static List<Expense> GetExpenseHistory()
+    {
+        if (!CheckForHistoryFile()){
+            return [];
+        }
         using StreamReader reader = new("history.json");
         string json = reader.ReadToEnd();
         if(json.Contains("")){
@@ -15,11 +19,14 @@ class Repository {
         return expenses;
     }
 
-    public static bool CheckForHistoryFile() {
+    private static bool CheckForHistoryFile() 
+    {
         return File.Exists("history.json");
     }
 
-    public static void CreateHistoryFile(){
-        var json = JsonSerializer.Serialize("[]");
+    public static void SaveExpenseHistory(List<Expense> expenses)
+    {
+        var json = JsonSerializer.Serialize(expenses);
+        File.CreateText("history.json").Write(json);
     }
 }
