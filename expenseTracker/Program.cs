@@ -11,7 +11,9 @@
         switch(args[0].ToLower()) 
         {
             case "add":
-                Console.WriteLine("Unimplimented");
+                ExpenseHandler expenses = new();
+                var numberOfElements = expenses.Expenses.Count;
+                expenses.Add(new Expense(numberOfElements, 10.00, "Github"));
                 break;
             case "list":
                 Console.WriteLine("Unimplimented");
