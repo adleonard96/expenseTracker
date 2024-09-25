@@ -11,6 +11,12 @@
         switch(args[0].ToLower()) 
         {
             case "add":
+                const int MINIMUM_ARGUMENTS = 5;
+                if (args.Length < MINIMUM_ARGUMENTS)
+                {
+                    Console.WriteLine("Not enough arguments where passed");
+                }
+
                 ExpenseHandler expenses = new();
                 var numberOfElements = expenses.Expenses.Count;
                 expenses.Add(new Expense(numberOfElements, 10.00, "Github"));
