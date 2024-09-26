@@ -16,6 +16,5 @@ class Expense {
         Price = price;
         Description = description;
         Date = date;
-     }
-
+    }
 }

@@ -15,7 +15,9 @@
                 if (args.Length < MINIMUM_ARGUMENTS)
                 {
                     Console.WriteLine("Not enough arguments where passed");
+                    break;
                 }
+                
 
                 ExpenseHandler expenses = new();
                 var numberOfElements = expenses.Expenses.Count;
