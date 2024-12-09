@@ -17,11 +17,25 @@
                     Console.WriteLine("Not enough arguments where passed");
                     break;
                 }
-                
+                var expense = new Expense();
+                for(int i = 1; i < args.Length; i += 2)
+                {
+                    switch(args[i].ToLower())
+                    {
+                        case "--description":
+                            expense.Description = args[i+1];
+                            break;
+                        case "--amount":
+                            expense.Price = Convert.ToDouble(args[i+1].Replace(",", ""));
+                            break;
+                    }
+                }
 
                 ExpenseHandler expenses = new();
                 var numberOfElements = expenses.Expenses.Count;
-                expenses.Add(new Expense(numberOfElements, 10.00, "Github"));
+                expense.Id = numberOfElements;
+                expense.Date = new DateTime();
+                expenses.Add(expense);
                 break;
             case "list":
                 Console.WriteLine("Unimplimented");
