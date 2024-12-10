@@ -11,11 +11,16 @@
         switch(args[0].ToLower()) 
         {
             case "add":
-                const int MINIMUM_ARGUMENTS = 5;
-                if (args.Length < MINIMUM_ARGUMENTS)
+                const int NUMBER_OF_ARGS = 5;
+                if (args.Length < NUMBER_OF_ARGS)
                 {
                     Console.WriteLine("Not enough arguments where passed");
-                    break;
+                    throw new Exception();
+                }
+                if (args.Length > NUMBER_OF_ARGS)
+                {
+                    Console.WriteLine("To many arguments passed for adding an expense");
+                    throw new Exception();
                 }
                 var expense = new Expense();
                 for(int i = 1; i < args.Length; i += 2)
