@@ -1,25 +1,29 @@
 using System.Text.Json;
 
-class Repository {
+class Repository
+{
     public static List<Expense> GetExpenseHistory()
     {
-        if (!CheckForHistoryFile()){
+        if (!CheckForHistoryFile())
+        {
             return [];
         }
         using StreamReader reader = new("history.json");
         string json = reader.ReadToEnd();
-        if(json.Contains("")){
+        if (json.Contains(""))
+        {
             return [];
         }
         var expenses = JsonSerializer.Deserialize<List<Expense>>(json);
-        if(expenses is null){
+        if (expenses is null)
+        {
             return [];
         }
 
         return expenses;
     }
 
-    private static bool CheckForHistoryFile() 
+    private static bool CheckForHistoryFile()
     {
         return File.Exists("history.json");
     }
@@ -27,6 +31,10 @@ class Repository {
     public static void SaveExpenseHistory(List<Expense> expenses)
     {
         var json = JsonSerializer.Serialize(expenses);
-        File.CreateText("history.json").Write(json);
+        Console.WriteLine(json);
+        const string FILE_NAME = "history.json";
+        using StreamWriter sw = File.CreateText(FILE_NAME);
+        sw.Write(json);
+
     }
 }

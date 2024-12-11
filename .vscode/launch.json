@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "dotnet: build",
             "program": "${workspaceFolder}/expenseTracker/bin/Debug/net8.0/expenseTracker.dll",
-            "args": ["add"],
+            "args": ["add", "--description", "netflix", "--amount", "10"],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
