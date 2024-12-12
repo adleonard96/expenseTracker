@@ -10,7 +10,7 @@ class Repository
         }
         using StreamReader reader = new("history.json");
         string json = reader.ReadToEnd();
-        if (json.Contains(""))
+        if (json.Equals(""))
         {
             return [];
         }
