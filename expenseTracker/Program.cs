@@ -37,8 +37,8 @@
                 }
 
                 ExpenseHandler expenses = new();
-                var numberOfElements = expenses.Expenses.Count;
-                expense.Id = numberOfElements;
+                var maxId = expenses.Expenses.Max(w => w.Id);
+                expense.Id = ++maxId;
                 expense.Date = new DateTime();
                 expenses.Add(expense);
                 break;
