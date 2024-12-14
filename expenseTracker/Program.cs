@@ -8,6 +8,7 @@
             return;
         }
         
+        ExpenseHandler expenses = new();
         switch(args[0].ToLower()) 
         {
             case "add":
@@ -36,14 +37,20 @@
                     }
                 }
 
-                ExpenseHandler expenses = new();
                 var maxId = expenses.Expenses.Max(w => w.Id);
                 expense.Id = ++maxId;
                 expense.Date = new DateTime();
                 expenses.Add(expense);
                 break;
             case "list":
-                Console.WriteLine("Unimplimented");
+                
+                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine("| Description | Price | Date Added | Id |");
+                Console.WriteLine("-----------------------------------------");
+                foreach(Expense e in expenses.Expenses)
+                {
+                    Console.WriteLine(String.Format("| {0, 5} | {1, 5} | {2, 5} | {3, 5} |", e.Description, e.Price, e.Date.ToString(), e.Id));
+                };
                 break;
             case "summary":
                 Console.WriteLine("Unimplimented");
