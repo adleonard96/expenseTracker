@@ -39,18 +39,19 @@
 
                 var maxId = expenses.Expenses.Max(w => w.Id);
                 expense.Id = ++maxId;
-                expense.Date = new DateTime();
+                expense.Date = DateTime.Now;
                 expenses.Add(expense);
                 break;
             case "list":
                 
-                Console.WriteLine("-----------------------------------------");
-                Console.WriteLine("| Description | Price | Date Added | Id |");
-                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine("| Description | Price |      Date Added      |  Id  |");
+                Console.WriteLine("-----------------------------------------------------");
                 foreach(Expense e in expenses.Expenses)
                 {
-                    Console.WriteLine(String.Format("| {0, 5} | {1, 5} | {2, 5} | {3, 5} |", e.Description, e.Price, e.Date.ToString(), e.Id));
+                    Console.WriteLine(String.Format("| {0, 8} | {1, 5} | {2, 5} | {3, 4} |", e.Description.PadRight(11, ' '), e.Price, e.Date.ToString(), e.Id));
                 };
+                Console.WriteLine("-----------------------------------------------------");
                 break;
             case "summary":
                 Console.WriteLine("Unimplimented");
