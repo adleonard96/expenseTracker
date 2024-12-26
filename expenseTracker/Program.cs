@@ -1,4 +1,6 @@
-﻿class Driver
+﻿using System.Diagnostics;
+
+class Driver
 {
     static void Main(string[] args)
     {
@@ -49,12 +51,15 @@
                 Console.WriteLine("-----------------------------------------------------");
                 foreach(Expense e in expenses.Expenses)
                 {
-                    Console.WriteLine(String.Format("| {0, 8} | {1, 5} | {2, 5} | {3, 4} |", e.Description.PadRight(11, ' '), e.Price, e.Date.ToString(), e.Id));
+                    Console.WriteLine(string.Format("| {0, 8} | {1, 5} | {2, 5} | {3, 4} |", e.Description.PadRight(11, ' '), e.Price, e.Date.ToString(), e.Id));
                 };
                 Console.WriteLine("-----------------------------------------------------");
                 break;
             case "summary":
-                Console.WriteLine("Unimplimented");
+                var total = expenses.Expenses.Sum(expense => expense.Price);
+                Console.WriteLine("Expenses Summary");
+                Console.WriteLine("----------------");
+                Console.WriteLine(string.Format("Total: {0}", total));
                 break;
             case "delete":
                 Console.WriteLine("Unimplimented");
